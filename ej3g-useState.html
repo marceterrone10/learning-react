@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function TypeInput() {
+        const [inputText, setInputText] = React.useState("");
+        // inputText es el valor actual del input
+        // setInputText es la funcion que actualiza el valor del input
+        function saveInputText(e) {
+          setInputText(e.target.value);
+        };
+
+        return (
+          <>
+            <input 
+              placeholder="Type something" 
+              onChange={saveInputText}
+              size="30"
+            />
+            <p>Hello: {inputText} </p>
+          </>
+        )
+      }
+
+      
+      function App() {
+        return (
+          <>
+            <TypeInput />
+          </>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
